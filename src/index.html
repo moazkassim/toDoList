@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./input.css" />
+    <link rel="stylesheet" href="./all.min.css" />
+    <link rel="stylesheet" href="../dist/output.css" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container flex justify-center">
+      <div
+        class="to-do-list bg-white w-96 border-2 border-green-500 p-3 rounded border-3 my-16"
+      >
+        <div class="to-do-div flex flex-row justify-between">
+          <h1 class="text-xl font-medium">TODO App</h1>
+          <div class="flex flex-col">
+            <div class="icons-pos p-2 flex flex-row justify-end">
+              <button id="search-button">
+                <i class="fa-solid fa-magnifying-glass mx-4"></i>
+              </button>
+              <button id="sort-button">
+                <i class="fa-solid fa-arrow-down-wide-short"></i>
+              </button>
+            </div>
+            <input
+              id="search-input"
+              class="bg-[#e9f0f9] transition-all outline-none rounded"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          class="add-task flex flex-row justify-between p-3 bg-green-100 rounded my-8 cursor-pointer"
+        >
+          <p>Add New Task</p>
+          <button class="add-button">
+            <svg
+              width="20px"
+              height="20px"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#22c55e"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M15 12H12M12 12H9M12 12V9M12 12V15M17 21H7C4.79086 21 3 19.2091 3 17V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V17C21 19.2091 19.2091 21 17 21Z"
+                  stroke="#22c55e"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                ></path>
+              </g>
+            </svg>
+          </button>
+        </div>
+        <hr />
+        <h2 class="text-xl text-center my-6">Tasks</h2>
+
+        <div class="tasks">
+          <!-- <div class="task bg-green-100 rounded p-3 border-2 border-green-200">
+            <div class="about-task flex flex-col p-2">
+              <h3 class="text-lg my-1">webpage first task</h3>
+              <span class="text-sm my-1 text-[#788389]">2023-03-17</span>
+              <p class="my-1">front end tutorial</p>
+            </div>
+            <div class="process-task flex justify-center my-3">
+              <button id="edit-task">
+                <i class="fa-regular fa-pen-to-square text-[20px]"></i>
+              </button>
+              <button id="delete-task" class="mx-4">
+                <i class="fa-regular fa-trash-can text-[20px]"></i>
+              </button>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div
+      class="overlay hidden transition-all w-full h-full absolute bg-black/60 inset-0 items-center justify-center"
+    >
+      <div
+        class="task-data border-1 w-[500px] bg-white flex flex-col h-[580px] rounded p-4"
+      >
+        <div class="head-task flex flex-row justify-between">
+          <h1 class="text-[25px] border-b-1 float-left mb-4">Add New Task</h1>
+          <button class="">
+            <div class="w-[35] h-[35]">
+              <svg
+                class="exist"
+                width="35px"
+                height="35px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <g clip-path="url(#clip0_429_11083)">
+                    <path
+                      d="M7 7.00006L17 17.0001M7 17.0001L17 7.00006"
+                      stroke="#707070"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_429_11083">
+                      <rect width="24" height="24" fill="white"></rect>
+                    </clipPath>
+                  </defs>
+                </g>
+              </svg>
+            </div>
+          </button>
+        </div>
+        <hr />
+        <div class="task-title flex flex-col">
+          <h2 class="my-2 text-[19px]">Task Title</h2>
+          <input
+            id="title-input"
+            class="h-10 border-2 rounded p-2 outline-[#22c55e] mx-1"
+            type="text"
+          />
+          <span class="text-[red] ml-2">Task can't be blank</span>
+        </div>
+        <div class="task-date flex flex-col my-6">
+          <h2 class="mb-2 text-[19px]">Due Date</h2>
+
+          <input
+            type="date"
+            id="date-input"
+            class="h-10 border-2 rounded outline-[#22c55e] mx-1 p-2"
+            name="trip-start"
+            min="2018-01-01"
+            max="2018-12-31"
+          />
+        </div>
+        <div class="task-description flex flex-col">
+          <h2 class="mb-2 text-[19px]">Description</h2>
+          <textarea
+            id="description-input"
+            class="h-36 border-2 rounded outline-[#22c55e] mx-1 p-2"
+            name="w3review"
+            rows="4"
+            cols="50"
+          ></textarea>
+        </div>
+        <hr class="mt-4" />
+        <div class="buttons flex flex-row justify-end mt-5">
+          <button id="close" class="bg-[#737373] text-[white] rounded p-2">
+            Close
+          </button>
+          <button id="add" class="bg-[#22c55e] text-[white] ml-2 rounded p-2">
+            Add
+          </button>
+          <button
+            id="edit"
+            class="bg-[#22c55e] text-[white] ml-2 rounded p-2 hidden"
+          >
+            Edit
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>
